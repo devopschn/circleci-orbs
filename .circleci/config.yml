@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   welcome: circleci/welcome-orb@0.4.1
-  node: circleci/node@1.0.1
+  node: circleci/node@3.0.1
   gcp-gke: circleci/gcp-gke@0.1.0
   gcr: circleci/gcp-gcr@0.0.2
 jobs:
@@ -12,9 +12,12 @@ jobs:
     steps:
       - checkout
       # Install node
-      - node/install
-      # Install npm
       - node/install-npm
+      # Install npm
+      - node/install-packages:
+          app-dir: ~/backend_api
+          cache-path: node_modules
+          override-ci-command: npm i
       # Download and cache dependencies
       - node/with-cache:
           steps:
