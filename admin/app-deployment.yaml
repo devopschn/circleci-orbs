@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - image: gcr.io/civic-network-308208/circleci-gke:v1
-          name: dominic-backend
+          name: rusty-pangolin
           ports:
             - containerPort: 3000
               name: ci-deploy
