@@ -15,8 +15,6 @@ jobs:
     machine: true
     steps:
       — checkout
-      - run:
-      - checkout
       # Install node
       - node/install
       # Install npm
