@@ -10,21 +10,13 @@ jobs:
     docker:
       — image: circleci/node:7.10
     working_directory: ~/repo
-    description: Install npm
-    # machine option runs your jobs in a dedicated, ephemeral VM that has the following specifications:
-    machine: true
     steps:
-      - checkout
-      # Install node
-      - node/install
-      # Install npm
-      - node/install-npm
-      # Download and cache dependencies
-      - node/with-cache:
-          steps:
-            - run:
-                name: Install application dependencies
-                command: npm install
+      — checkout
+      - run:
+          name: Install application dependencies
+          command: npm install
+ 
+      — run: npm test
           # Save cache
           cache-key: package.json
           # Ignore non-checksum cache hits
